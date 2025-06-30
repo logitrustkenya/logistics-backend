@@ -13,8 +13,11 @@ interface ValidationErrors {
     businessRegistration?: string
     courierCompanyName?: string
     licenseNumber?: string
+    serviceType?: string
+    experience?: string
     coverage?: string
     driverLicense?: string
+    vehicleType?: string
     vehicleRegistration?: string
     insuranceNumber?: string
 }
@@ -129,16 +132,32 @@ export function validateCourierFields(data: SignupData): ValidationErrors {
 
 export function validateDeliveryManFields(data: SignupData): ValidationErrors {
     const errors: ValidationErrors = {}
-    if(!data.driverLicense?.trim()){
-        errors.driverLicense = "Driver's license is required"
-    }
-    if(!data.vehicleRegistration?.trim()){
-        errors.vehicleRegistration = "Vehicle registration is required"
-    }
-    if(!data.insuranceNumber?.trim()){
-        errors.insuranceNumber = "Insurance number is required"
-    }
-    return errors
+    const sanitizedDriverLicense = data.driverLicense ? sanitizeInput(data.driverLicense) : ""
+    const sanitizedVehicleRegistration = data.vehicleRegistration ? sanitizeInput(data.vehicleRegistration) : ""
+    const sanitizedInsuranceNumber = data.insuranceNumber ? sanitizeInput(data.insuranceNumber) : ""
+    if (!sanitizedDriverLicense) {
+    errors.driverLicense = "Driver's license is required"
+  } else if (!/^[a-zA-Z0-9-]{5,50}$/.test(sanitizedDriverLicense)) {
+    errors.driverLicense = "Driver's license must be 5-50 alphanumeric characters or hyphens"
+  }
+
+  if (data.vehicleType && !["motorcycle", "car", "van", "pickup", "truck", "bicycle"].includes(data.vehicleType)) {
+    errors.vehicleType = "Invalid vehicle type"
+  }
+
+  if (!sanitizedVehicleRegistration) {
+    errors.vehicleRegistration = "Vehicle registration is required"
+  } else if (!/^[a-zA-Z0-9-]{5,50}$/.test(sanitizedVehicleRegistration)) {
+    errors.vehicleRegistration = "Vehicle registration must be 5-50 alphanumeric characters or hyphens"
+  }
+
+  if (!sanitizedInsuranceNumber) {
+    errors.insuranceNumber = "Insurance number is required"
+  } else if (!/^[a-zA-Z0-9-]{5,50}$/.test(sanitizedInsuranceNumber)) {
+    errors.insuranceNumber = "Insurance number must be 5-50 alphanumeric characters or hyphens"
+  }
+
+  return errors
 }
 
 export function ValidateSMEFields(data: SignupData): ValidationErrors {
@@ -156,6 +175,9 @@ export function ValidateSMEFields(data: SignupData): ValidationErrors {
 
   if (data.businessRegistration && !/^[a-zA-Z0-9-]{5,50}$/.test(sanitizeInput(data.businessRegistration))) {
     errors.businessRegistration = "Business registration must be 5-50 alphanumeric characters or hyphens"
+  }
+  if (data.experience && !["0-2", "3-5", "6-10", "10+"].includes(data.experience)) {
+    errors.experience = "Invalid experience range"
   }
 
   return errors

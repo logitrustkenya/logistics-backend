@@ -22,7 +22,9 @@
   "homepage": "https://github.com/logitrustkenya/logistics-backend#readme",
   "dependencies": {
     "bcrypt": "^6.0.0",
+    "cors": "^2.8.5",
     "dotenv": "^17.0.0",
+    "express-rate-limit": "^7.5.1",
     "mongodb": "^6.17.0",
     "next": "^15.3.4",
     "sanitize-html": "^2.17.0",

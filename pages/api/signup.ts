@@ -1,6 +1,8 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { validateSignupData } from '../../lib/utils/validation'
 import { checkUserExists, createUser } from '../../lib/services/user'
+import { logSignupAttempt, logError} from '../../lib/utils/logger'
+import { protectRoute} from '../../lib/middleware/protectRoute'
 import { closeMongoDBConnection } from '../../lib/mongodb/connect'
 
 interface SignupData {
@@ -26,13 +28,23 @@ interface SignupData {
   insuranceNumber?: string
 }
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+interface ErrorResponse {
+    message?: string
+    errors?: Record<string, string>
+}
+
+async function handler(req: NextApiRequest, res: NextApiResponse) {
     if(req.method !== "POST") {
         return res.status(405).json({ message: "Method not allowed"})
     }
 
     const data: SignupData = req.body
+    logSignupAttempt(data.email, data.userType)
 
+    const errors = validateSignupData(data)
+    if(Object.keys(errors).length > 0) {
+        return res.status(400).json({ errors})
+    }
     try{
         const errors = validateSignupData(data)
         if(Object.keys(errors).length > 0) {
@@ -53,3 +65,5 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         await closeMongoDBConnection()
     }
 }
+
+export default protectRoute(handler)

@@ -1,9 +1,8 @@
 import { MongoClient, MongoClientOptions } from 'mongodb';
-import dotenv from 'dotenv';
+import { MONGODB_URI } from '../utils/constants';
 
-const uri = process.env.MONGODB_URI;
-if(!uri){
-    throw new Error('MONGODB_URI enviroment varible is not set')
+if(!MONGODB_URI){
+    throw new Error('MONGODB_URI environment variable is not set')
 }
 
 const options: MongoClientOptions = {
@@ -13,7 +12,7 @@ const options: MongoClientOptions = {
     serverSelectionTimeoutMS: 5000,
 }
 
-const client = new MongoClient(uri, options)
+const client = new MongoClient(MONGODB_URI, options)
 
 let isConnected = false
 
