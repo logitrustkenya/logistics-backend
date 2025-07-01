@@ -1,7 +1,7 @@
 import { NextApiHandler, NextApiRequest, NextApiResponse } from "next"
 import { getDatabase } from "../../lib/mongodb/connect"
 import { protectRoute } from "../../lib/middleware/protectRoute"
-import { logError } from "../../lib/utils/logger"
+import logger from "../../lib/utils/logger"
 
 
 async function handler(req: NextApiRequest, res: NextApiResponse) {
@@ -26,9 +26,9 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
         }
         return res.status(200).json({message: "Verified successfully"})
     } catch (error) {
-        logError("Verified error", error)
+        logger.error("Verified error", error)
         return res.status(500).json({message: "Server error, please try again later"})
     }
 }
 
-export default protectRoute(handler)
+export default handler

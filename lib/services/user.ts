@@ -22,6 +22,7 @@ interface SignupData {
     vehicleType?: string
     vehicleRegistration?: string
     insuranceNumber?: string
+    verificationToken?: string
 }
 
 export async function checkUserExists(email: string): Promise<boolean> {
@@ -63,6 +64,10 @@ export async function createUser(data: SignupData): Promise<void> {
         vehicleType: data.vehicleType,
         vehicleRegistration: data.vehicleRegistration,
         insuranceNumber: data.insuranceNumber,
+        }),
+        ...(data.verificationToken && {
+            verificationToken: data.verificationToken,
+            isVerified: false,
         }),
     }
     await usersCollection.insertOne(userData)

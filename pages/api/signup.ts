@@ -1,9 +1,10 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { validateSignupData } from '../../lib/utils/validation'
 import { checkUserExists, createUser } from '../../lib/services/user'
-import { logSignupAttempt, logError} from '../../lib/utils/logger'
-import { protectRoute} from '../../lib/middleware/protectRoute'
+import logger from '../../lib/utils/logger'
 import { closeMongoDBConnection } from '../../lib/mongodb/connect'
+import { sendVerificationEmail } from '../../lib/utils/email'
+import crypto from 'crypto'
 
 interface SignupData {
   userType: string
@@ -26,6 +27,7 @@ interface SignupData {
   vehicleType?: string
   vehicleRegistration?: string
   insuranceNumber?: string
+  verificationToken?: string
 }
 
 interface ErrorResponse {
@@ -39,31 +41,33 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
     }
 
     const data: SignupData = req.body
-    logSignupAttempt(data.email, data.userType)
+    logger.info(`Signup attempt: ${data.email} - ${data.userType}`)
 
     const errors = validateSignupData(data)
     if(Object.keys(errors).length > 0) {
         return res.status(400).json({ errors})
     }
     try{
-        const errors = validateSignupData(data)
-        if(Object.keys(errors).length > 0) {
-            return res.status(400).json({ errors})
-        }
-
-        const userExits = await checkUserExists(data.email)
-        if(userExits) {
+        const userExists = await checkUserExists(data.email)
+        if(userExists) {
             return res.status(400).json({ message: "Email already registered"})
         }
 
-        await createUser(data)
-        return res.status(201).json({ message: "User created successfully"})
+        // Generate verification token
+        const verificationToken = crypto.randomBytes(32).toString('hex')
+
+        await createUser({...data, verificationToken})
+
+        // Send verification email
+        await sendVerificationEmail(data.email, verificationToken)
+
+        return res.status(201).json({ message: "User created successfully. Please check your email to verify your account."})
     } catch(error) {
-        console.error("Signup error:", error)
+        logger.error("Signup error", error)
         return res.status(500).json({ message: "Server error, please try again later"})
     } finally{
         await closeMongoDBConnection()
     }
 }
 
-export default protectRoute(handler)
+export default handler

@@ -13,14 +13,10 @@ const logger = winston.createLogger({
     ],
 })
 
-export function logSignupAttempt(email: string, userType: string){
-    logger.info(`Signup attempt for email: ${email}, userType: ${userType}`)
+if(process.env.NODE_ENV !== 'production') {
+    logger.add(new winston.transports.Console({
+        format: winston.format.simple()
+    }));
 }
 
-export function logSignupSuccess(email: string, userType: string){
-    logger.info(`Signup successful for email: ${email}, userType: ${userType}`)
-}
-
-export function logError(message: string, error?: unknown) {
-    logger.error(message, { error: error instanceof Error ? error.message: error})
-}
+export default logger;

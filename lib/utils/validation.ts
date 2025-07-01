@@ -98,7 +98,7 @@ export function validateCommonFields(data: SignupData): ValidationErrors {
 export function validateCourierFields(data: SignupData): ValidationErrors {
     const errors: ValidationErrors = {}
     const sanitizedCourierCompanyName = data.courierCompanyName ? sanitizeInput(data.courierCompanyName): ""
-    const sanitizedLicenseNumber = data.licenseNumber ? sanitizeInput(data.courierCompanyName) : ""
+    const sanitizedLicenseNumber = data.licenseNumber ? sanitizeInput(data.licenseNumber) : ""
     const sanitizedCoverage = data.coverage ? sanitizeInput(data.coverage) : ""
 
     if (!sanitizedCourierCompanyName) {
