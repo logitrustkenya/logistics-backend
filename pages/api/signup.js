@@ -52,8 +52,7 @@ async function handler(req, res) {
       message: "Server error, please try again later" 
     });
   } finally {
-    // Note: In production, you might want to keep connections alive
-    // and only close them when the app shuts down
+    
     await closeMongoDBConnection();
   }
 }
