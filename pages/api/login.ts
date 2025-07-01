@@ -56,6 +56,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
     return res.status(200).json({ message: 'Login successful' })
   } catch (error) {
     logger.error('Login error', error)
+    console.error('Login API error:', error)
     return res.status(500).json({ message: 'Server error, please try again later' })
   }
 }
