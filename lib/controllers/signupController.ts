@@ -26,7 +26,7 @@ export async function signup(req: Request, res: Response) {
         const verificationToken = crypto.randomBytes(32).toString('hex');
 
         await createUser({ ...data, verificationToken });
-
+    //    await sendVerificationEmail(data.email, verificationToken);
         // await sendVerificationEmail(data.email, verificationToken);
         return res.status(201).json({ message: 'User created successfully. Please check your email to verify your account.' });
     } catch (error) {
