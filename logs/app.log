@@ -12,3 +12,68 @@
 {"level":"info","message":"MongoDB connected successfully","timestamp":"2025-07-01T23:46:31.541Z"}
 {"level":"info","message":"Server is running on port 8080","timestamp":"2025-07-01T23:46:31.576Z"}
 {"level":"info","message":"Environment: development","timestamp":"2025-07-01T23:46:31.579Z"}
+{"level":"info","message":"Server is running on port 8080","timestamp":"2025-07-02T18:49:43.288Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-07-02T18:52:13.149Z"}
+{"level":"info","message":"Server is running on port 8080","timestamp":"2025-07-02T18:52:13.177Z"}
+{"level":"info","message":"Environment: development","timestamp":"2025-07-02T18:52:13.180Z"}
+{"level":"info","message":"Signup attempt: godwin@example.com - sme","timestamp":"2025-07-02T18:54:42.053Z"}
+{"level":"info","message":"Signup attempt: godwin@example.com - sme","timestamp":"2025-07-02T18:57:13.267Z"}
+{"level":"info","message":"Signup attempt: godwin@example.com - sme","timestamp":"2025-07-02T18:58:02.169Z"}
+{"level":"info","message":"Signup attempt: godwin@example.com - sme","timestamp":"2025-07-02T18:58:14.086Z"}
+{"level":"info","message":"Signup attempt: godwin@example.com - sme","timestamp":"2025-07-02T18:59:17.956Z"}
+{"level":"info","message":"Signup attempt: godwin@example.com - sme","timestamp":"2025-07-02T19:03:05.701Z"}
+{"level":"info","message":"Signup attempt: godwin@example.com - sme","timestamp":"2025-07-02T19:04:59.342Z"}
+{"address":"::1","code":"ESOCKET","command":"CONN","errno":-4078,"level":"error","message":"Failed to send verification email to godwin@example.com connect ECONNREFUSED ::1:587","port":587,"stack":"Error: connect ECONNREFUSED ::1:587\n    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1634:16)","syscall":"connect","timestamp":"2025-07-02T19:04:59.918Z"}
+{"level":"error","message":"Signup error Failed to send verification email","stack":"Error: Failed to send verification email\n    at C:\\Users\\User\\Documents\\7myProj\\Team-projects\\logistics-backend\\lib\\utils\\email.js:43:19\n    at Generator.throw (<anonymous>)\n    at rejected (C:\\Users\\User\\Documents\\7myProj\\Team-projects\\logistics-backend\\lib\\utils\\email.js:6:65)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)","timestamp":"2025-07-02T19:04:59.925Z"}
+{"level":"info","message":"SIGINT received, shutting down gracefully","timestamp":"2025-07-02T19:05:17.061Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-07-02T19:05:24.120Z"}
+{"level":"info","message":"Server is running on port 8080","timestamp":"2025-07-02T19:05:24.143Z"}
+{"level":"info","message":"Environment: development","timestamp":"2025-07-02T19:05:24.145Z"}
+{"level":"info","message":"Signup attempt: godwin@example.com - sme","timestamp":"2025-07-02T19:05:29.627Z"}
+{"level":"info","message":"Signup attempt: godwin@example.com - sme","timestamp":"2025-07-02T19:06:47.498Z"}
+{"level":"info","message":"Signup attempt: godwin@example.com - sme","timestamp":"2025-07-02T19:06:51.127Z"}
+{"level":"info","message":"Signup attempt: godwin@example.com - sme","timestamp":"2025-07-02T19:07:28.821Z"}
+{"level":"info","message":"Signup attempt: godwintest@example.com - sme","timestamp":"2025-07-02T19:07:47.918Z"}
+{"address":"::1","code":"ESOCKET","command":"CONN","errno":-4078,"level":"error","message":"Failed to send verification email to godwintest@example.com connect ECONNREFUSED ::1:587","port":587,"stack":"Error: connect ECONNREFUSED ::1:587\n    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1634:16)","syscall":"connect","timestamp":"2025-07-02T19:07:49.820Z"}
+{"level":"error","message":"Signup error Failed to send verification email","stack":"Error: Failed to send verification email\n    at C:\\Users\\User\\Documents\\7myProj\\Team-projects\\logistics-backend\\lib\\utils\\email.js:43:19\n    at Generator.throw (<anonymous>)\n    at rejected (C:\\Users\\User\\Documents\\7myProj\\Team-projects\\logistics-backend\\lib\\utils\\email.js:6:65)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)","timestamp":"2025-07-02T19:07:49.825Z"}
+{"level":"info","message":"SIGINT received, shutting down gracefully","timestamp":"2025-07-02T19:08:00.346Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-07-02T19:08:06.119Z"}
+{"level":"info","message":"Server is running on port 8080","timestamp":"2025-07-02T19:08:06.134Z"}
+{"level":"info","message":"Environment: development","timestamp":"2025-07-02T19:08:06.142Z"}
+{"level":"info","message":"Signup attempt: godwintesting@example.com - sme","timestamp":"2025-07-02T19:08:19.437Z"}
+{"address":"::1","code":"ESOCKET","command":"CONN","errno":-4078,"level":"error","message":"Failed to send verification email to godwintesting@example.com connect ECONNREFUSED ::1:587","port":587,"stack":"Error: connect ECONNREFUSED ::1:587\n    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1634:16)","syscall":"connect","timestamp":"2025-07-02T19:08:19.918Z"}
+{"level":"error","message":"Signup error Failed to send verification email","stack":"Error: Failed to send verification email\n    at C:\\Users\\User\\Documents\\7myProj\\Team-projects\\logistics-backend\\lib\\utils\\email.js:43:19\n    at Generator.throw (<anonymous>)\n    at rejected (C:\\Users\\User\\Documents\\7myProj\\Team-projects\\logistics-backend\\lib\\utils\\email.js:6:65)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)","timestamp":"2025-07-02T19:08:19.923Z"}
+{"level":"info","message":"SIGINT received, shutting down gracefully","timestamp":"2025-07-02T19:09:59.374Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-07-02T19:10:05.310Z"}
+{"level":"info","message":"Server is running on port 8080","timestamp":"2025-07-02T19:10:05.326Z"}
+{"level":"info","message":"Environment: development","timestamp":"2025-07-02T19:10:05.328Z"}
+{"level":"info","message":"Signup attempt: godwintesting@example.com - sme","timestamp":"2025-07-02T19:10:15.126Z"}
+{"level":"info","message":"Signup attempt: godwintestings@example.com - sme","timestamp":"2025-07-02T19:10:27.502Z"}
+{"level":"info","message":"Signup attempt: asad@gmail.com - sme","timestamp":"2025-07-02T19:49:54.192Z"}
+{"level":"info","message":"Signup attempt: asad@gmail.com - sme","timestamp":"2025-07-02T19:49:57.801Z"}
+{"level":"info","message":"Signup attempt: asad@gmail.com - sme","timestamp":"2025-07-02T19:50:31.140Z"}
+{"level":"info","message":"Signup attempt: eugenekarewa@outlook.com - sme","timestamp":"2025-07-02T19:55:02.135Z"}
+{"level":"info","message":"Signup attempt: godwintestingys@example.com - sme","timestamp":"2025-07-02T19:58:45.043Z"}
+{"level":"info","message":"Login attempt: godwintestingys@example.com","timestamp":"2025-07-02T20:00:51.753Z"}
+{"level":"info","message":"SIGINT received, shutting down gracefully","timestamp":"2025-07-02T20:31:25.064Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-07-02T20:31:33.305Z"}
+{"level":"info","message":"Server is running on port 8080","timestamp":"2025-07-02T20:31:33.339Z"}
+{"level":"info","message":"Environment: development","timestamp":"2025-07-02T20:31:33.352Z"}
+{"level":"info","message":"SIGINT received, shutting down gracefully","timestamp":"2025-07-02T20:36:28.040Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-07-02T20:36:35.083Z"}
+{"level":"info","message":"Server is running on port 8080","timestamp":"2025-07-02T20:36:35.098Z"}
+{"level":"info","message":"Environment: development","timestamp":"2025-07-02T20:36:35.100Z"}
+{"level":"info","message":"Signup attempt: godwi6ntestingys@example.com - sme","timestamp":"2025-07-02T20:37:34.418Z"}
+{"level":"info","message":"SIGINT received, shutting down gracefully","timestamp":"2025-07-02T20:44:50.962Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-07-02T20:44:57.680Z"}
+{"level":"info","message":"Server is running on port 8080","timestamp":"2025-07-02T20:44:57.689Z"}
+{"level":"info","message":"Environment: development","timestamp":"2025-07-02T20:44:57.691Z"}
+{"level":"info","message":"SIGINT received, shutting down gracefully","timestamp":"2025-07-02T20:47:13.581Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-07-02T20:47:18.783Z"}
+{"level":"info","message":"Server is running on port 8080","timestamp":"2025-07-02T20:47:18.797Z"}
+{"level":"info","message":"Environment: development","timestamp":"2025-07-02T20:47:18.799Z"}
+{"level":"info","message":"SIGINT received, shutting down gracefully","timestamp":"2025-07-02T20:54:27.513Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-07-02T20:54:32.298Z"}
+{"level":"info","message":"Server is running on port 8080","timestamp":"2025-07-02T20:54:32.309Z"}
+{"level":"info","message":"Environment: development","timestamp":"2025-07-02T20:54:32.312Z"}
+{"level":"info","message":"SIGINT received, shutting down gracefully","timestamp":"2025-07-02T20:55:20.613Z"}

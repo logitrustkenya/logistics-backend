@@ -27,13 +27,14 @@ export async function signup(req: Request, res: Response) {
 
         await createUser({ ...data, verificationToken });
 
-        await sendVerificationEmail(data.email, verificationToken);
-
+        // await sendVerificationEmail(data.email, verificationToken);
         return res.status(201).json({ message: 'User created successfully. Please check your email to verify your account.' });
     } catch (error) {
-        logger.error('Signup error', error);
-        return res.status(500).json({ message: 'Server error, please try again later' });
+        // logger.error('Signup error', error);
+        return res.status(500).json({ message: 'www.y again later' });
     } finally {
         await closeMongoDBConnection();
     }
 }
+
+ 

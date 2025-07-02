@@ -11,9 +11,18 @@ const PORT = process.env.PORT || 8080;
 
 const server = http.createServer(app);
 
+const allowedOrigins = [
+  "http://localhost:3000",
+  "https://logistics-enhanced-app.vercel.app"
+];
+
+if (process.env.APP_URL) {
+  allowedOrigins.push(process.env.APP_URL);
+}
+
 const io = new SocketIOServer(server, {
     cors: {
-        origin: process.env.APP_URL || ["http://localhost:3000", "https://your-frontend-domain.com"],
+        origin: allowedOrigins,
         methods: ["GET", "POST"],
         allowedHeaders: ["Authorization"],
         credentials: true
