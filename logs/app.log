@@ -77,3 +77,6 @@
 {"level":"info","message":"Server is running on port 8080","timestamp":"2025-07-02T20:54:32.309Z"}
 {"level":"info","message":"Environment: development","timestamp":"2025-07-02T20:54:32.312Z"}
 {"level":"info","message":"SIGINT received, shutting down gracefully","timestamp":"2025-07-02T20:55:20.613Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-07-02T20:56:03.995Z"}
+{"level":"info","message":"Server is running on port 8080","timestamp":"2025-07-02T20:56:04.030Z"}
+{"level":"info","message":"Environment: development","timestamp":"2025-07-02T20:56:04.138Z"}

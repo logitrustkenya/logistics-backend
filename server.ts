@@ -21,12 +21,12 @@ if (process.env.APP_URL) {
 }
 
 const io = new SocketIOServer(server, {
-    cors: {
-        origin: allowedOrigins,
-        methods: ["GET", "POST"],
-        allowedHeaders: ["Authorization"],
-        credentials: true
-    }
+   cors: {
+  origin: allowedOrigins,
+  methods: ["GET", "POST"],
+  allowedHeaders: ["Authorization", "Content-Type"],
+  credentials: true
+}
 });
 
 interface ChatMessage {

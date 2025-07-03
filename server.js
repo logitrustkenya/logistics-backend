@@ -32,7 +32,7 @@ const io = new socket_io_1.Server(server, {
     cors: {
         origin: allowedOrigins,
         methods: ["GET", "POST"],
-        allowedHeaders: ["Authorization"],
+        allowedHeaders: ["Authorization", "Content-Type"],
         credentials: true
     }
 });
