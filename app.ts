@@ -10,10 +10,32 @@ const app = express();
 
 // Middleware
 app.use(helmet());
+
+// fix allowed origins for CORS
+// This allows requests from specific origins, including localhost and production URL
+const allowedOrigins = [
+    'http://localhost:3000',
+    'https://logistics-enhanced.vercel.app'
+];
+
+if (process.env.APP_URL) {
+    allowedOrigins.push(process.env.APP_URL);
+}
+
 app.use(cors({
-    origin: process.env.APP_URL || 'http://localhost:3000',
+    origin: function (origin, callback) {
+        if (!origin || allowedOrigins.includes(origin)) {
+            callback(null, true);
+        } else {
+            callback(new Error(`Origin not allowed by CORS: ${origin}`));
+        }
+    },
     credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization']
 }));
+
+
 app.use(morgan('dev'));
 app.use(json());
 app.use(urlencoded({ extended: true }));

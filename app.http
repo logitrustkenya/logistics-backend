@@ -8,7 +8,7 @@ Content-Type: application/json
   "userType": "sme",
   "firstName": "Godwin",
   "lastName": "test",
-  "email": "godwi6ntestingys@example.com",
+  "email": "sda@example.com",
   "password": "12345@test",
 "confirmPassword": "12345@test",
   "phoneNumber": "+1234567890",

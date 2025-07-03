@@ -80,3 +80,4 @@
 {"level":"info","message":"MongoDB connected successfully","timestamp":"2025-07-02T20:56:03.995Z"}
 {"level":"info","message":"Server is running on port 8080","timestamp":"2025-07-02T20:56:04.030Z"}
 {"level":"info","message":"Environment: development","timestamp":"2025-07-02T20:56:04.138Z"}
+{"level":"info","message":"Signup attempt: sda@example.com - sme","timestamp":"2025-07-03T08:15:48.557Z"}

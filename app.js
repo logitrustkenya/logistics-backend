@@ -12,9 +12,27 @@ const apiRoutes_1 = __importDefault(require("./lib/routes/apiRoutes"));
 const app = (0, express_1.default)();
 // Middleware
 app.use((0, helmet_1.default)());
+// fix allowed origins for CORS
+// This allows requests from specific origins, including localhost and production URL
+const allowedOrigins = [
+    'http://localhost:3000',
+    'https://logistics-enhanced.vercel.app'
+];
+if (process.env.APP_URL) {
+    allowedOrigins.push(process.env.APP_URL);
+}
 app.use((0, cors_1.default)({
-    origin: process.env.APP_URL || 'http://localhost:3000',
+    origin: function (origin, callback) {
+        if (!origin || allowedOrigins.includes(origin)) {
+            callback(null, true);
+        }
+        else {
+            callback(new Error(`Origin not allowed by CORS: ${origin}`));
+        }
+    },
     credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization']
 }));
 app.use((0, morgan_1.default)('dev'));
 app.use((0, body_parser_1.json)());
