@@ -53,7 +53,7 @@ function handler(req, res) {
             const token = jsonwebtoken_1.default.sign({ userId: user._id, email: user.email }, JWT_SECRET, { expiresIn: '1h' });
             return res.json({
                 success: true,
-                message: 'Login successful',
+                message: 'Login was successful, token generated',
                 token,
                 user: {
                     userType: user.userType,

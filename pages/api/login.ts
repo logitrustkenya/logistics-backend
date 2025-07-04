@@ -64,10 +64,10 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
 
     return res.json({
       success: true,
-      message: 'Login successful',
+      message: 'Login was successful, token generated',
       token,
       user: {
-        userType: user.userType ,
+        userType: user.userType,
         userId: user._id,
         email: user.email,
         name: user.firstName + ' ' + user.lastName,
