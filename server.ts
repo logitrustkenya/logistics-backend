@@ -13,7 +13,7 @@ const server = http.createServer(app);
 
 const allowedOrigins = [
   "http://localhost:3000",
-  "https://logistics-enhanced-app.vercel.app"
+  "https://logisticske.vercel.app"
 ];
 
 if (process.env.APP_URL) {

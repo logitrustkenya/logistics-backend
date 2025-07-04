@@ -23,7 +23,7 @@ const PORT = process.env.PORT || 8080;
 const server = http_1.default.createServer(app_1.default);
 const allowedOrigins = [
     "http://localhost:3000",
-    "https://logistics-enhanced-app.vercel.app"
+    "https://logisticske.vercel.app"
 ];
 if (process.env.APP_URL) {
     allowedOrigins.push(process.env.APP_URL);

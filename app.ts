@@ -15,7 +15,7 @@ app.use(helmet());
 // This allows requests from specific origins, including localhost and production URL
 const allowedOrigins = [
     'http://localhost:3000',
-    'https://logistics-enhanced.vercel.app'
+    'https://logisticske.vercel.app'
 ];
 
 if (process.env.APP_URL) {
