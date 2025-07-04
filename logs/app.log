@@ -88,3 +88,41 @@
 {"level":"info","message":"MongoDB connected successfully","timestamp":"2025-07-04T10:36:46.793Z"}
 {"level":"info","message":"Server is running on port 8080","timestamp":"2025-07-04T10:36:46.828Z"}
 {"level":"info","message":"Environment: development","timestamp":"2025-07-04T10:36:46.829Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-07-04T20:50:49.178Z"}
+{"level":"info","message":"Server is running on port 8080","timestamp":"2025-07-04T20:50:49.230Z"}
+{"level":"info","message":"Environment: development","timestamp":"2025-07-04T20:50:49.235Z"}
+{"level":"info","message":"Login attempt: godwintestingys@example.com","timestamp":"2025-07-04T20:50:59.601Z"}
+{"level":"info","message":"Signup attempt: adam@gmail.com - sme","timestamp":"2025-07-04T20:53:16.978Z"}
+{"level":"info","message":"Login attempt: adam@gmail.com","timestamp":"2025-07-04T20:53:23.988Z"}
+{"level":"info","message":"Login attempt: adam@gmail.com","timestamp":"2025-07-04T21:00:04.261Z"}
+{"level":"info","message":"Login attempt: adam@gmail.com","timestamp":"2025-07-04T21:00:13.180Z"}
+{"level":"info","message":"Login attempt: adam@gmail.com","timestamp":"2025-07-04T21:01:53.850Z"}
+{"level":"info","message":"Login attempt: adam@gmail.com","timestamp":"2025-07-04T21:02:36.681Z"}
+{"level":"info","message":"SIGINT received, shutting down gracefully","timestamp":"2025-07-04T21:04:06.218Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-07-04T21:04:11.741Z"}
+{"level":"info","message":"Server is running on port 8080","timestamp":"2025-07-04T21:04:11.757Z"}
+{"level":"info","message":"Environment: development","timestamp":"2025-07-04T21:04:11.758Z"}
+{"level":"info","message":"Login attempt: adam@gmail.com","timestamp":"2025-07-04T21:04:52.749Z"}
+{"level":"info","message":"Login attempt: adam@gmail.com","timestamp":"2025-07-04T21:05:02.589Z"}
+{"level":"info","message":"Login attempt: adam@gmail.com","timestamp":"2025-07-04T21:10:33.910Z"}
+{"level":"info","message":"Login attempt: adam@gmail.com","timestamp":"2025-07-04T21:10:42.587Z"}
+{"level":"info","message":"Login attempt: adam@gmail.com","timestamp":"2025-07-04T21:12:56.033Z"}
+{"level":"info","message":"Login attempt: adam@gmail.com","timestamp":"2025-07-04T21:13:04.647Z"}
+{"level":"info","message":"Signup attempt: adamz@gmail.com - sme","timestamp":"2025-07-04T21:13:55.086Z"}
+{"level":"info","message":"Signup attempt: adamz@gmail.com - sme","timestamp":"2025-07-04T21:14:53.843Z"}
+{"level":"info","message":"Signup attempt: adamzt@gmail.com - sme","timestamp":"2025-07-04T21:15:01.487Z"}
+{"level":"info","message":"SIGINT received, shutting down gracefully","timestamp":"2025-07-04T21:15:38.209Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-07-04T21:15:45.660Z"}
+{"level":"info","message":"Server is running on port 8080","timestamp":"2025-07-04T21:15:45.669Z"}
+{"level":"info","message":"Environment: development","timestamp":"2025-07-04T21:15:45.670Z"}
+{"level":"info","message":"Signup attempt: adamzt@gmail.com - sme","timestamp":"2025-07-04T21:15:49.689Z"}
+{"level":"info","message":"Signup attempt: adat@gmail.com - sme","timestamp":"2025-07-04T21:16:01.845Z"}
+{"level":"info","message":"Signup attempt: adat@gmail.com - sme","timestamp":"2025-07-04T21:17:01.979Z"}
+{"level":"info","message":"Signup attempt: adt@gmail.com - sme","timestamp":"2025-07-04T21:17:15.688Z"}
+{"level":"info","message":"SIGINT received, shutting down gracefully","timestamp":"2025-07-04T21:17:29.138Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-07-04T21:17:33.897Z"}
+{"level":"info","message":"Server is running on port 8080","timestamp":"2025-07-04T21:17:33.914Z"}
+{"level":"info","message":"Environment: development","timestamp":"2025-07-04T21:17:33.916Z"}
+{"level":"info","message":"Signup attempt: sadt@gmail.com - sme","timestamp":"2025-07-04T21:17:43.476Z"}
+{"level":"info","message":"Signup attempt: sayyyt@gmail.com - sme","timestamp":"2025-07-04T21:18:26.264Z"}
+{"level":"info","message":"SIGINT received, shutting down gracefully","timestamp":"2025-07-04T21:18:40.039Z"}

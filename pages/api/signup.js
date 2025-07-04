@@ -38,7 +38,7 @@ function handler(req, res) {
             yield (0, user_1.createUser)(Object.assign(Object.assign({}, data), { verificationToken }));
             // Send verification email
             // await sendVerificationEmail(data.email, verificationToken)
-            return res.status(201).json({ message: "User created successfully. Please check your email to verify your account." });
+            return res.status(201).json({ message: "User created successfully....congrats 2. Please check your email to verify your account." });
         }
         catch (error) {
             logger_1.default.error("Signup error", error);

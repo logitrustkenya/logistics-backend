@@ -1,39 +1,60 @@
-import { Request, Response } from 'express';
-import bcrypt from 'bcrypt';
-import { getDatabase } from '../mongodb/connect';
-import logger from '../utils/logger';
 
-export async function login(req: Request, res: Response) {
-    if (req.method !== 'POST') {
-        return res.status(405).json({ message: 'Method not allowed' });
+import { Request, Response } from 'express'
+import bcrypt from 'bcrypt'
+import jwt from 'jsonwebtoken'
+import { getDatabase } from '../../lib/mongodb/connect'
+import logger from '../../lib/utils/logger'
+
+const JWT_SECRET = 'ca0e70b4a83f9477Qazxdfe45e6f62678bv-lhu-b1a3344zxxcffga933b85b967274d93c6c3c61a5b784ea1f5a5e1'
+// const JWT_EXPIRATION = '1h'
+
+export const login = async (req: Request, res: Response) => {
+  const { email, password } = req.body
+
+  if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    return res.status(400).json({ message: 'Valid email is required' })
+  }
+
+  if (!password || password.length < 8) {
+    return res.status(400).json({ message: 'Password must be at least 8 characters long' })
+  }
+
+  try {
+    const db = await getDatabase()
+    const usersCollection = db.collection('users')
+    const user = await usersCollection.findOne({ email })
+
+    if (!user) {
+      return res.status(401).json({ message: 'Email not found' })
     }
-    const data = req.body;
-    logger.info(`Login attempt: ${data.email}`);
 
-    if (!data.email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
-        return res.status(400).json({ errors: { email: 'Valid email is required' } });
-    }
-    if (!data.password || data.password.length < 8) {
-        return res.status(400).json({ errors: { password: 'Password must be at least 8 characters long' } });
+    const passwordMatch = await bcrypt.compare(password, user.password)
+    if (!passwordMatch) {
+      return res.status(401).json({ message: 'Incorrect password, Try again' })
     }
 
-    try {
-        const db = await getDatabase();
-        const usersCollection = db.collection('users');
-        const user = await usersCollection.findOne({ email: data.email });
+    const token = jwt.sign(
+      { userId: user._id, email: user.email },
+      JWT_SECRET,
+      { expiresIn: '1h' }
+    )
 
-        if (!user) {
-            return res.status(401).json({ message: 'Invalid email or password' });
-        }
-
-        const passwordMatch = await bcrypt.compare(data.password, user.password);
-        if (!passwordMatch) {
-            return res.status(401).json({ message: 'Invalid email or password' });
-        }
-
-        return res.status(200).json({ message: 'Login successful' });
-    } catch (error) {
-        logger.error('Login error', error);
-        return res.status(500).json({ message: 'Server error, please try again later' });
-    }
+    return res.status(200).json({
+      success: true,
+      message: 'Login was successful, token generated.....',
+      token,
+      user: {
+        userType: user.userType,
+        userId: user._id,
+        email: user.email,
+        name: user.firstName + ' ' + user.lastName,
+      }
+    })
+  }
+   catch (error) {
+    logger.error('Login error', error)
+    console.error('Login API error:', error)
+    return res.status(500).json({ message: 'Server error, please try again later' })
+  }
 }
+
