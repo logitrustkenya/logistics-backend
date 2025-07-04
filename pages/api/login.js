@@ -16,6 +16,7 @@ const connect_1 = require("../../lib/mongodb/connect");
 const bcrypt_1 = __importDefault(require("bcrypt"));
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const logger_1 = __importDefault(require("../../lib/utils/logger"));
+const JWT_SECRET = 'ca0e70b4a83f9477Qazxdfe45e6f62678bv-lhu-b1a3344zxxcffga933b85b967274d93c6c3c61a5b784ea1f5a5e1';
 function validateLoginData(data) {
     const errors = {};
     if (!data.email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
@@ -49,14 +50,14 @@ function handler(req, res) {
                 return res.status(401).json({ message: 'Incorrect password, Try again' });
             }
             // Generate JWT token
-            const token = jsonwebtoken_1.default.sign({ userId: user._id, email: user.email }, process.env.JWT_SECRET, { expiresIn: '1h' });
+            const token = jsonwebtoken_1.default.sign({ userId: user._id, email: user.email }, JWT_SECRET, { expiresIn: '1h' });
             return res.json({
                 success: true,
                 message: 'Login successful',
                 token,
                 user: {
                     userType: user.userType,
-                    id: user._id,
+                    userId: user._id,
                     email: user.email,
                     name: user.firstName + ' ' + user.lastName,
                 }

@@ -9,6 +9,9 @@ interface LoginData {
   password: string
 }
 
+const JWT_SECRET = 'ca0e70b4a83f9477Qazxdfe45e6f62678bv-lhu-b1a3344zxxcffga933b85b967274d93c6c3c61a5b784ea1f5a5e1'
+// const JWT_EXPIRATION = '1h'
+
 interface ErrorResponse {
   message?: string
   errors?: Record<string, string>
@@ -55,7 +58,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
     // Generate JWT token
     const token = jwt.sign(
       { userId: user._id, email: user.email },
-      process.env.JWT_SECRET as string,
+      JWT_SECRET as string,
       { expiresIn: '1h' }
     )
 
@@ -65,7 +68,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
       token,
       user: {
         userType: user.userType ,
-        id: user._id,
+        userId: user._id,
         email: user.email,
         name: user.firstName + ' ' + user.lastName,
       }

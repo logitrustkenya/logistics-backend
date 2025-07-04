@@ -16,7 +16,6 @@ const validation_1 = require("../../lib/utils/validation");
 const user_1 = require("../../lib/services/user");
 const logger_1 = __importDefault(require("../../lib/utils/logger"));
 const connect_1 = require("../../lib/mongodb/connect");
-const email_1 = require("../../lib/utils/email");
 const crypto_1 = __importDefault(require("crypto"));
 function handler(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
@@ -38,7 +37,7 @@ function handler(req, res) {
             const verificationToken = crypto_1.default.randomBytes(32).toString('hex');
             yield (0, user_1.createUser)(Object.assign(Object.assign({}, data), { verificationToken }));
             // Send verification email
-            yield (0, email_1.sendVerificationEmail)(data.email, verificationToken);
+            // await sendVerificationEmail(data.email, verificationToken)
             return res.status(201).json({ message: "User created successfully. Please check your email to verify your account." });
         }
         catch (error) {
