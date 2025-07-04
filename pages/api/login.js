@@ -51,7 +51,7 @@ function handler(req, res) {
             }
             // Generate JWT token
             const token = jsonwebtoken_1.default.sign({ userId: user._id, email: user.email }, JWT_SECRET, { expiresIn: '1h' });
-            return res.json({
+            return res.status(200).json({
                 success: true,
                 message: 'Login was successful, token generated',
                 token,

@@ -62,7 +62,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
       { expiresIn: '1h' }
     )
 
-    return res.json({
+    return res.status(200).json({
       success: true,
       message: 'Login was successful, token generated',
       token,
