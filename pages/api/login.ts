@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { checkUserExists } from '../../lib/services/user'
 import { getDatabase } from '../../lib/mongodb/connect'
 import bcrypt from 'bcrypt'
+import jwt from 'jsonwebtoken'
 import logger from '../../lib/utils/logger'
 
 interface LoginData {
@@ -44,16 +44,32 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
     const user = await usersCollection.findOne({ email: data.email })
 
     if (!user) {
-      return res.status(401).json({ message: 'Invalid email or password' })
+      return res.status(401).json({ message: 'Email not found' })
     }
 
     const passwordMatch = await bcrypt.compare(data.password, user.password)
     if (!passwordMatch) {
-      return res.status(401).json({ message: 'Invalid email or password' })
+      return res.status(401).json({ message: 'Incorrect password, Try again' })
     }
 
-    // Login successful - for now, just return success message
-    return res.status(200).json({ message: 'Login successful' })
+    // Generate JWT token
+    const token = jwt.sign(
+      { userId: user._id, email: user.email },
+      process.env.JWT_SECRET as string,
+      { expiresIn: '1h' }
+    )
+
+    return res.json({
+      success: true,
+      message: 'Login successful',
+      token,
+      user: {
+        userType: user.userType ,
+        id: user._id,
+        email: user.email,
+        name: user.firstName + ' ' + user.lastName,
+      }
+    })
   } catch (error) {
     logger.error('Login error', error)
     console.error('Login API error:', error)

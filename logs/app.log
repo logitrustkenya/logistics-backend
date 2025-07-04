@@ -81,3 +81,10 @@
 {"level":"info","message":"Server is running on port 8080","timestamp":"2025-07-02T20:56:04.030Z"}
 {"level":"info","message":"Environment: development","timestamp":"2025-07-02T20:56:04.138Z"}
 {"level":"info","message":"Signup attempt: sda@example.com - sme","timestamp":"2025-07-03T08:15:48.557Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-07-03T14:40:36.654Z"}
+{"level":"info","message":"Server is running on port 8080","timestamp":"2025-07-03T14:40:36.678Z"}
+{"level":"info","message":"Environment: development","timestamp":"2025-07-03T14:40:36.680Z"}
+{"level":"info","message":"Login attempt: godwintestingys@example.com","timestamp":"2025-07-03T17:38:43.671Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-07-04T10:36:46.793Z"}
+{"level":"info","message":"Server is running on port 8080","timestamp":"2025-07-04T10:36:46.828Z"}
+{"level":"info","message":"Environment: development","timestamp":"2025-07-04T10:36:46.829Z"}
