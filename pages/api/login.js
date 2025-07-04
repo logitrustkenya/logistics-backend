@@ -14,6 +14,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const connect_1 = require("../../lib/mongodb/connect");
 const bcrypt_1 = __importDefault(require("bcrypt"));
+const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const logger_1 = __importDefault(require("../../lib/utils/logger"));
 function validateLoginData(data) {
     const errors = {};
@@ -41,14 +42,25 @@ function handler(req, res) {
             const usersCollection = db.collection('users');
             const user = yield usersCollection.findOne({ email: data.email });
             if (!user) {
-                return res.status(401).json({ message: 'Invalid email or password' });
+                return res.status(401).json({ message: 'Email not found' });
             }
             const passwordMatch = yield bcrypt_1.default.compare(data.password, user.password);
             if (!passwordMatch) {
-                return res.status(401).json({ message: 'Invalid email or password' });
+                return res.status(401).json({ message: 'Incorrect password, Try again' });
             }
-            // Login successful - for now, just return success message
-            return res.status(200).json({ message: 'Login successful' });
+            // Generate JWT token
+            const token = jsonwebtoken_1.default.sign({ userId: user._id, email: user.email }, process.env.JWT_SECRET, { expiresIn: '1h' });
+            return res.json({
+                success: true,
+                message: 'Login successful',
+                token,
+                user: {
+                    userType: user.userType,
+                    id: user._id,
+                    email: user.email,
+                    name: user.firstName + ' ' + user.lastName,
+                }
+            });
         }
         catch (error) {
             logger_1.default.error('Login error', error);
