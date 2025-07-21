@@ -3,6 +3,7 @@ import { signup } from '../controllers/signupController';
 import { login } from '../controllers/loginController';
 import { verify } from '../controllers/verifyController';
 import { rateCourier } from '../controllers/rateCourierController';
+import { googleLogin, googleCallback } from '../controllers/googleAuthController';
 
 const router = Router();
 
@@ -16,5 +17,7 @@ router.post('/signup', asyncHandler(signup));
 router.post('/login', asyncHandler(login));
 router.get('/verify', asyncHandler(verify));
 router.post('/rateCourier', asyncHandler(rateCourier));
+router.get('/auth/google/login', googleLogin);
+router.get('/auth/google/callback', asyncHandler(googleCallback));
 
 export default router;
