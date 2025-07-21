@@ -44,7 +44,14 @@ export const googleCallback = async (req: Request, res: Response) => {
       }),
     });
 
-    const tokenData = await tokenResponse.json();
+    const tokenData = (await tokenResponse.json()) as {
+      access_token: string;
+      expires_in: number;
+      refresh_token?: string;
+      scope: string;
+      token_type: string;
+      id_token: string;
+    };
 
     if (!tokenResponse.ok) {
       logger.error('Failed to exchange code for tokens', tokenData);
