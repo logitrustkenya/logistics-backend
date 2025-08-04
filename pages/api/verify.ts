@@ -2,9 +2,12 @@ import { NextApiHandler, NextApiRequest, NextApiResponse } from "next"
 import { getDatabase } from "../../lib/mongodb/connect"
 import { protectRoute } from "../../lib/middleware/protectRoute"
 import logger from "../../lib/utils/logger"
+import corsMiddleware from '../../lib/middleware/cors'
 
 
 async function handler(req: NextApiRequest, res: NextApiResponse) {
+    await corsMiddleware(req, res)
+
     if(req.method !=="GET"){
         return res.status(405).json({ message: "Method not allowed"})
     }

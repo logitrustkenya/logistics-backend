@@ -3,6 +3,7 @@ import { getDatabase } from '../../lib/mongodb/connect'
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
 import logger from '../../lib/utils/logger'
+import corsMiddleware from '../../lib/middleware/cors'
 
 interface LoginData {
   email?: string
@@ -61,6 +62,8 @@ async function verifyGoogleToken(credential: string) {
 }
 
 async function handler(req: NextApiRequest, res: NextApiResponse) {
+  await corsMiddleware(req, res)
+
   if (req.method !== 'POST') {
     return res.status(405).json({ message: 'Method not allowed' })
   }

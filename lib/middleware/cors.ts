@@ -6,10 +6,21 @@ const cors = Cors({
   origin: [
     'http://localhost:3000',
     'https://logisticske.vercel.app',
-    process.env.APP_URL || ''
+    process.env.APP_URL || '',
+    'https://accounts.google.com',
+    'https://oauth2.googleapis.com'
   ],
   credentials: true,
-  allowedHeaders: ['Authorization', 'Content-Type']
+  allowedHeaders: [
+    'Authorization', 
+    'Content-Type', 
+    'X-Requested-With',
+    'Accept',
+    'Origin',
+    'Access-Control-Request-Method',
+    'Access-Control-Request-Headers'
+  ],
+  exposedHeaders: ['Set-Cookie', 'X-Content-Type-Options']
 })
 
 // Helper method to wait for a middleware to execute before continuing
@@ -26,5 +37,10 @@ function runMiddleware(req: any, res: any, fn: any) {
 }
 
 export default async function corsMiddleware(req: any, res: any) {
+  // Add FedCM-specific headers
+  res.setHeader('Access-Control-Allow-Private-Network', 'true')
+  res.setHeader('Cross-Origin-Opener-Policy', 'same-origin-allow-popups')
+  res.setHeader('Cross-Origin-Embedder-Policy', 'credentialless')
+  
   await runMiddleware(req, res, cors)
 }

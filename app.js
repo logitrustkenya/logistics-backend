@@ -27,6 +27,7 @@ app.use((0, cors_1.default)({
             callback(null, true);
         }
         else {
+            console.error(`CORS error: Origin not allowed by CORS: ${origin}`);
             callback(new Error(`Origin not allowed by CORS: ${origin}`));
         }
     },
@@ -34,6 +35,14 @@ app.use((0, cors_1.default)({
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization']
 }));
+// Explicitly handle OPTIONS preflight requests
+app.options('*', (req, res) => {
+    res.header('Access-Control-Allow-Origin', req.headers.origin || '');
+    res.header('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE,OPTIONS');
+    res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+    res.header('Access-Control-Allow-Credentials', 'true');
+    res.sendStatus(204);
+});
 app.use((0, morgan_1.default)('dev'));
 app.use((0, body_parser_1.json)());
 app.use((0, body_parser_1.urlencoded)({ extended: true }));
