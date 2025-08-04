@@ -7,6 +7,7 @@ import { sendVerificationEmail } from '../../lib/utils/email'
 import crypto from 'crypto'
 import jwt from 'jsonwebtoken'
 import bcrypt from 'bcrypt'
+import corsMiddleware from '../../lib/middleware/cors'
 
 interface SignupData {
   userType: string
@@ -111,6 +112,8 @@ async function createGoogleUser(userData: SignupData, googleUserData: any) {
 }
 
 async function handler(req: NextApiRequest, res: NextApiResponse) {
+    await corsMiddleware(req, res)
+
     if(req.method !== "POST") {
         return res.status(405).json({ message: "Method not allowed"})
     }

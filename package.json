@@ -55,7 +55,7 @@
     "@types/jsonwebtoken": "^9.0.10",
     "@types/mongodb-memory-server": "^2.3.0",
     "@types/morgan": "^1.9.10",
-    "@types/node": "^24.0.7",
+    "@types/node": "^24.1.0",
     "@types/node-fetch": "^2.6.12",
     "@types/nodemailer": "^6.4.17",
     "@types/sanitize-html": "^2.16.0",
