@@ -132,3 +132,6 @@
 {"level":"info","message":"MongoDB connected successfully","timestamp":"2025-08-04T09:10:33.418Z"}
 {"level":"info","message":"Server is running on port 8080","timestamp":"2025-08-04T09:10:33.430Z"}
 {"level":"info","message":"Environment: development","timestamp":"2025-08-04T09:10:33.432Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-08-05T05:41:11.708Z"}
+{"level":"info","message":"Server is running on port 8080","timestamp":"2025-08-05T05:41:11.729Z"}
+{"level":"info","message":"Environment: development","timestamp":"2025-08-05T05:41:11.731Z"}
