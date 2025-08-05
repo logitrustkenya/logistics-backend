@@ -64,4 +64,10 @@ app.get('/health', (req, res) => {
 // Use API routes
 app.use('/api', apiRoutes);
 
+// Add error handling for routes
+app.use((err: any, req: express.Request, res: express.Response, next: express.NextFunction) => {
+  console.error('Route error:', err);
+  res.status(500).json({ error: 'Internal server error' });
+});
+
 export default app;
